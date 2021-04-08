@@ -12,29 +12,42 @@ const Cliente = sequelize.define("cliente", {
         primaryKey: true,
         type: Sequelize.INTEGER
     },
+    
     nome: {
         allowNull: false,
         type: Sequelize.STRING(100),
         validate: {
             len: [3, 100]
-        }
+        },
+        
     },
-    salario: {
+    qntidadestoque: {
         allowNull: false,
         type: Sequelize.DOUBLE(),
         validate: {
             len: [1, 999999]
         }
     },
-    dataNascimento: {
+    preco: {
         allowNull: false,
-        type: Sequelize.DATE()
+        type: Sequelize.DOUBLE(),
+        validate: {
+            len: [1,999999]
+        }
     },
     ativo: {
         allowNull: false,
         type: Sequelize.BOOLEAN(),
         defaultValue: true
-    }
+    },
+
+    descricao: {
+        allowNull: false,
+        type: Sequelize.STRING(500),
+        validade: {
+            len:[1, 15]
+        }
+    },
 });
  
 module.exports = Cliente;
