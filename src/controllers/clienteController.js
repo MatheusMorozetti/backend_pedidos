@@ -5,15 +5,19 @@ const status = require('http-status');
 // Cria o método Insert, obtendo os dados da request
 exports.Insert = (req, res, next) => {
     const nome = req.body.nome;
-    const salario = req.body.salario;
-    const dataNascimento = req.body.dataNascimento;
+    const id = req.body.id;
+    const descricao = req.body.descricao;
+    const preco = req.body.preco;
+    const qntidadestoque = req.body.qntidadestoque;
     const ativo = req.body.ativo;
  
     // Popula cada um dos campos do model com os campos recebido na request
     Cliente.create({
         nome: nome,
-        salario: salario,
-        dataNascimento: dataNascimento,
+        id: id,
+        descricao:  descricao,
+        preco: preco,
+        qntidadestoque: qntidadestoque,
         ativo: ativo,
     })
         //then = registra o que queremos que aconteca quando a Promise for resolvida
@@ -53,8 +57,10 @@ exports.SelectDetail = (req, res, next) => {
 exports.Update = (req, res, next) => {
     const id = req.params.id;
     const nome = req.body.nome;
-    const salario = req.body.salario;
-    const dataNascimento = req.body.dataNascimento;
+    const id = req.body.id;
+    const preco = req.body.preco;
+    const qntidadestoque = req.body.qntidadestoque;
+    const descricao = req.body.descricao;
     const ativo = req.body.ativo;
  
     Cliente.findByPk(id)
@@ -62,8 +68,10 @@ exports.Update = (req, res, next) => {
             if (cliente) {
                 cliente.update({
                     nome: nome,
-                    salario: salario,
-                    dataNascimento: dataNascimento,
+                    id: id,
+                    preco: preco,
+                    qntidadestoque: qntidadestoque,
+                    descricao: descricao,
                     ativo: ativo
                 },
                     {
